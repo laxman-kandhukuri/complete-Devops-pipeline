@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: complete-devops-pipeline
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: complete-devops-pipeline
+  template:
+    metadata:
+      labels:
+        app: complete-devops-pipeline
+    spec:
+      containers:
+      - name: complete-devops-pipeline
+        image: laxman124/complete-devops-pipeline:latest
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
